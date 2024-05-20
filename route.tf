@@ -27,16 +27,19 @@ resource "aws_route_table" "private_rt" {
 }
 
 resource "aws_route_table_association" "public_rt_assoc" {
-  subnet_id      = aws_subnet.public_web_subnet.*.id
+  subnet_id      = aws_subnet.public_web_subnet[count.index].id
   route_table_id = aws_route_table.public_rt.id
+  count = 2
 }
 
 resource "aws_route_table_association" "private_app_assoc" {
-  subnet_id      = aws_subnet.private_app_subnet.*.id
+  subnet_id      = aws_subnet.private_app_subnet[count.index].id
   route_table_id = aws_route_table.private_rt.id
+  count = 2
 }
 
 resource "aws_route_table_association" "private_db_assoc" {
-  subnet_id      = aws_subnet.private_db_subnet.*.id
+  subnet_id      = aws_subnet.private_db_subnet[count.index].id
   route_table_id = aws_route_table.private_rt.id
+  count = 2
 }
