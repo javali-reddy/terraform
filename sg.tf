@@ -1,7 +1,7 @@
 resource "aws_security_group" "web-sg" {
     name        = "web-sg"
   description = "Allow inbound traffic"
-  vpc_id      = aws_vpc.main.id
+  vpc_id      = aws_vpc.custom_vpc.id
 
   ingress {
     description      = "SSH"
