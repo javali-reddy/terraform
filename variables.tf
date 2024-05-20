@@ -13,3 +13,7 @@ variable "private_cidr" {
 variable "db_cidr" {
   default = ["172.20.5.0/24","172.20.6.0/24"]
 }
+
+variable "ami" {
+  default = "ami-04ff98ccbfa41c9ad"
+}
