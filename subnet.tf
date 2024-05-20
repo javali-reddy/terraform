@@ -22,7 +22,7 @@ resource "aws_subnet" "private_app_subnet" {
 
 resource "aws_subnet" "private_db_subnet" {
   vpc_id     = aws_vpc.custom_vpc.id
-  cidr_block = var.var.db_cidr[count.index]
+  cidr_block = var.db_cidr[count.index]
   availability_zone = var.az[count.index]
   count=2
 
