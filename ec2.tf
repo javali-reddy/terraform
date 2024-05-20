@@ -15,7 +15,7 @@ resource "aws_instance" "public_web_servers" {
       type = "ssh"
       host = self.public_ip
       user = "ec2-user"
-      private_key = "${file("./infra_key.pem")}"
+      private_key = "${file("/home/ec2-user/infra_key.pem")}"
     }  
   }
   
