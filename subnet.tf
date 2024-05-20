@@ -5,6 +5,6 @@ resource "aws_subnet" "public_web_subnet" {
   count=2
 
   tags = {
-    Name = public-web-subnet-[count.index]
+    Name = "public-web-subnet-[count.index]"
   }
 }
