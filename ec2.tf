@@ -26,28 +26,28 @@ resource "aws_instance" "public_web_servers" {
 }
 
 
-resource "aws_instance" "private_app_servers" {
-  ami           = var.ami
-  instance_type = "t2.micro"
-  key_name = "infra_key"
-  subnet_id = aws_subnet.private_app_subnet[count.index].id
-  vpc_security_group_ids = [aws_security_group.app-sg.id]
-  count=2
+# resource "aws_instance" "private_app_servers" {
+#   ami           = var.ami
+#   instance_type = "t2.micro"
+#   key_name = "infra_key"
+#   subnet_id = aws_subnet.private_app_subnet[count.index].id
+#   vpc_security_group_ids = [aws_security_group.app-sg.id]
+#   count=2
 
-#   provisioner "file" {
-#     source = "./infra_key.pem"
-#     destination = "/home/ec2-user/infra_key.pem"
+# #   provisioner "file" {
+# #     source = "./infra_key.pem"
+# #     destination = "/home/ec2-user/infra_key.pem"
   
-#     connection {
-#       type = "ssh"
-#       host = self.public_ip
-#       user = "ec2-user"
-#       //private_key = "${file("/home/ec2-user/infra_key.pem")}"
-#     }  
+# #     connection {
+# #       type = "ssh"
+# #       host = self.public_ip
+# #       user = "ec2-user"
+# #       //private_key = "${file("/home/ec2-user/infra_key.pem")}"
+# #     }  
+# #   }
+  
+
+#   tags = {
+#     Name = "private-app-${count.index}"
 #   }
-  
-
-  tags = {
-    Name = "private-app-${count.index}"
-  }
-}
+# }
