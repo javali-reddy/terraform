@@ -7,17 +7,17 @@ resource "aws_instance" "public_web_servers" {
   associate_public_ip_address = true
   count=2
 
-  provisioner "file" {
-    source = "./infra_key.pem"
-    destination = "/home/ec2-user/infra_key.pem"
+#   provisioner "file" {
+#     source = "./infra_key.pem"
+#     destination = "/home/ec2-user/infra_key.pem"
   
-    connection {
-      type = "ssh"
-      host = self.public_ip
-      user = "ec2-user"
-      //private_key = "${file("/home/ec2-user/infra_key.pem")}"
-    }  
-  }
+#     connection {
+#       type = "ssh"
+#       host = self.public_ip
+#       user = "ec2-user"
+#       //private_key = "${file("/home/ec2-user/infra_key.pem")}"
+#     }  
+#   }
   
 
   tags = {
